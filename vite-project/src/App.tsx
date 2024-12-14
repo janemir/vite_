@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
@@ -15,19 +15,20 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import SignupForm from "@/components/SignupForm"; // Импорт компонента SignupForm
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+
+
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0)
 
     // Определение схемы формы
     const formSchema = z.object({
         username: z.string().min(2, {
             message: "Username must be at least 2 characters.",
         }),
-    });
+    })
 
     // Создание формы
     const form = useForm<z.infer<typeof formSchema>>({
@@ -35,11 +36,11 @@ function App() {
         defaultValues: {
             username: "",
         },
-    });
+    })
 
     // Обработчик отправки формы
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+        console.log(values)
     }
 
     return (
@@ -89,13 +90,9 @@ function App() {
                     </form>
                 </Form>
             </div>
-
-            {/* Интеграция SignupForm */}
-            <div style={{ marginTop: "3rem" }}>
-                <SignupForm /> {/* Использование компонента SignupForm */}
-            </div>
         </>
-    );
+    )
 }
 
-export default App;
+export default App
+
